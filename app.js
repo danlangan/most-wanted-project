@@ -115,6 +115,23 @@ function searchByName(people) {
 }
 // End of searchByName()
 
+function searchByTrait(people) {
+    let gender = promptFor("What's this persons gender? Enter n/a if you are not sure.", chars);
+    let dob = promptFor("Whats this person's birthday? Enter n/a if you are not sure.", chars);
+    let height = promptFor("How tall is this person? Enter n/a if you are not sure.", chars);
+    let weight = promptFor("How much does this person weigh? Enter n/a if you are not sure.", chars);
+    let eyeColor = promptFor("What is this person's eye color? Enter n/a if you are not sure.", chars);
+    let occupation = promptFor("What job does this person have? Enter n/a if you are not sure.", chars);
+
+    // Listed are all of the traits that someone could search by if they do not know the persons name.
+    let foundPersonsByTrait = people.filter(function(person){
+        if (person.gender === gender || person.dob === dob || person.height === height || person.weight === weight || person.eyeColor === eyeColor || person.occupation === occupation) {
+            return true;
+        }
+    });
+    return foundPersonsByTrait;
+}
+
 /**
  * This function will be useful for STRINGIFYING a collection of person-objects
  * first and last name properties in order to easily send the information
@@ -200,7 +217,7 @@ function getNameListString(foundPeople) {
     })
     .join("\n");
 }
-
+ 
 
 // FIND FAMILY
 function findPersonFamily(person, people) {
