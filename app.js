@@ -115,7 +115,7 @@ function searchByName(people) {
 }
 // End of searchByName()
 
-function searchByTrait(people) {
+function searchByTraits(people) {
     let gender = promptFor("What's this persons gender? Enter n/a if you are not sure.", chars);
     let dob = promptFor("Whats this person's birthday? Enter n/a if you are not sure.", chars);
     let height = promptFor("How tall is this person? Enter n/a if you are not sure.", chars);
