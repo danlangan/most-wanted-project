@@ -124,12 +124,19 @@ function searchByTraits(people) {
     let occupation = promptFor("What job does this person have? Enter n/a if you are not sure.", chars);
 
     // Listed are all of the traits that someone could search by if they do not know the persons name.
-    let foundPersonsByTrait = people.filter(function(person){
-        if (person.gender === gender || person.dob === dob || person.height === height || person.weight === weight || person.eyeColor === eyeColor || person.occupation === occupation) {
+    let foundPersonsByTrait = 
+        people.filter(function(person){
+        if (person.gender === gender || 
+            person.dob === dob || 
+            person.height === parseInt(height) ||
+            person.weight === parseInt(weight) ||
+            person.eyeColor === eyeColor || 
+            person.occupation === occupation)
+            {
             return true;
         }
     });
-    return foundPersonsByTrait;
+    return displayPeople(foundPersonsByTrait);
 }
 
 /**
@@ -167,6 +174,8 @@ function displayPerson(person) {
     personInfo += `Weight: ${person.weight}\n`;
     personInfo += `Eye Color: ${person.eyeColor}\n`;
     personInfo += `Occupation: ${person.occupation}\n`;
+
+    
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
 }
@@ -224,7 +233,7 @@ function findPersonFamily(person, people) {
     let family = {
         spouse: `${person.firstName} has no spouse`,
         parents: `${person.firstName} has no parents`,
-        siblings: `${person.firstName} has no siblings`
+        siblings: `${person.firstName} has no siblings`,
     };
     if (person.currentSpouse) {
         let spouse = people.filter((el) => {
@@ -252,3 +261,17 @@ function findPersonFamily(person, people) {
     }
     return family;
 }
+
+// Find Descendants
+
+function findPersonDescendants(people) {
+    let descendants = people.filter((el) => {
+        for (let person of person.parents) {
+            if (el.includes(parent) && el !== person) {
+                return true;
+            }
+        }
+    });
+    return descendants
+
+} return displayPeople(descendants)
