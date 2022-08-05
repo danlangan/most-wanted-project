@@ -121,7 +121,6 @@ function searchByTrait(people) {
         `Select and type each trait(s) that you would you like to seach for:\n\n
         'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation\n'
         `)
-        let genderSearchResults = [];
 
         if (searchTraitOptions === "gender") {
             let genderSearchOption = promptFor("Would you like to search for males for females?")
@@ -142,7 +141,23 @@ function searchByTrait(people) {
             };
         };
         if (searchTraitOptions === "height") {
-            let heightSearchOption = promptFor("How tall (in inches) do you think the person that you are looking for is? ")
+            let heightSearchOption = parseInt(promptFor("How tall (in inches) do you think the person that you are looking for is? "))
+
+            if (heightSearchOption < 70) {
+                (people.filter(function(people){(person.height)}) < 70)
+                for (height in person.height) {
+                    person.height =+ heightSearchResults
+                }
+                return heightSearchResults
+            }
+            else (heightSearchOption > 69) {
+                (people.filter(function(people){(person.height)}) > 69)
+                for (height in person.height) {
+                    person.height =+ heightSearchResults
+                }
+                return heightSearchResults
+            }
+        };
 
         switch (searchTraitOptions) {
             case "gender":
@@ -163,12 +178,7 @@ function searchByTrait(people) {
         
         };
     // Listed are all of the traits that someone could search by if they do not know the persons name.
-    let foundPeopleByTrait = `
-    ${genderSearchResults}\n\n
-    ${heightSearchResults}\n\n
-    $
-
-    `
+    let foundPeopleByTrait = []
         
     return displayPeople(foundPeopleByTrait);
 }
