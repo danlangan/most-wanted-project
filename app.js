@@ -122,24 +122,29 @@ function searchByTrait(people) {
         'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation\n'
         `)
 
+        if (searchTraitOptions === "gender") {
+            let genderSearchOption = promptFor("Would you like to search for males for females?")
+            let genderSearchResults = []
+            if (genderSearchOption === "female") {
+                (people.filter(function(people){(person.gender)}) === "female")
+                for ("female" in person.gender) {
+                    person.gender =+ genderSearchResults
+                }
+                return genderSearchResults
+            }
+            else (genderSearchOption === "male") {
+                (people.filter(function(people){(person.gender)}) === "male")
+                for ("male" in person.gender) {
+                    person.gender =+ genderSearchResults
+                }
+                return genderSearchResults
+            };
+        };
+
         switch (searchTraitOptions) {
             case "gender":
                 let genderSearchResults = promptFor("What's this persons gender? Enter n/a if you are not sure.", chars)
-                switch (genderSearchResults) {
-                    case "male":
-                        array.forEach(element => {
-                            (people.filter(function(people){(people.gender)}) === "male")
-                        }); 
-                        genderSearchResults += foundPeopleByTrait;
-                        searchByTrait();
-                    case "female":
-                        array.forEach(element => {
-                            (people.filter(function(people){(person.gender)}) === "femaile")
-                        });
-                        genderSearchResults += foundPeopleByTrait;
-                        searchByTrait();
-                    }
-                return genderSearchResults;
+                switch (genderSearchResults) {}
             case "height":
                 promptFor("How tall is this person? Enter n/a if you are not sure.", chars);
                 return height;
@@ -156,7 +161,10 @@ function searchByTrait(people) {
         };
     // Listed are all of the traits that someone could search by if they do not know the persons name.
     let foundPeopleByTrait = `
-        
+    ${genderSearchResults}\n\n
+    ${heightSearchResults}\n\n
+    $
+
     `
         
     return displayPeople(foundPeopleByTrait);
@@ -288,17 +296,17 @@ function findPersonFamily(person, people) {
 
 // Find Descendants
 
-function findPersonDescendants(person, people) {
-    let descendants = `${person.firstName} ${person.lastName} has no descendants`
-    
-    people.filter((el) => {
-        for (let person of person.parents) {
-            if (el.includes(parent) && el !== person) {
-                return true;
-            }
-        }
-    });
-    if (descendants.length > 0) { }
-    return descendants
+//function findPersonDescendants(person, people) {
+//    let descendants = `${person.firstName} ${person.lastName} has no descendants`
+  //  
+   // people.filter((el) => {
+    //    for (let person of person.parents) {
+      //      if (el.includes(parent) && el !== person) {
+        //        return true;
+          //  }
+       // }
+   // });
+   // if (descendants.length > 0) { }
+//    return descendants
 
-} return displayPeople(descendants)
+//} return displayPeople(descendants)
