@@ -118,175 +118,32 @@ function searchByName(people) {
 function searchByTrait(people) {
 
     let searchTraitOptions = promptFor(
-        `Select and type each trait(s) that you would you like to seach for:\n\n
-        'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation\n'
+        `Select and type the trait that you would you like to seach for:\n\n
+        'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation'\n
         `, chars);
+    let searchTraitValue = promptFor("Enter the value that you wish to search by related to your chosen trait: ", chars);
 
-        if (searchTraitOptions === "gender") {
-            let genderSearchOption = promptFor("Would you like to search for males for females?", chars);
-            
-            if (genderSearchOption === "female") {
-                (people.filter(function(people){(person.gender)}) === "female")
-                for ("female" in person.gender) {
-                    person.gender =+ genderSearchResults
-                }
-                return genderSearchResults
-            };
-            if (genderSearchOption === "male") {
-                (people.filter(function(people){(person.gender)}) === "male")
-                for ("male" in person.gender) {
-                    person.gender =+ genderSearchResults
-                }
-                return genderSearchResults
-            };
-            searchByTrait();
-        };
-        if (searchTraitOptions === "height") {
-            let heightSearchOption = parseInt(promptFor("How tall (in inches) do you think the person that you are looking for is? "))
+    let matchingArray = people.filter(
+        function(person){
+            if(person[searchTraitOptions] === searchTraitValue)
+            return person
+        }
+    )
+    displayPeople(matchingArray);
 
-            if (heightSearchOption < 70) {
-                (people.filter(function(people){(person.height)}) < 70)
-                for (height in person.height) {
-                    person.height =+ heightSearchResults
-                }
-                return heightSearchResults
-            };
-            if (heightSearchOption > 69) {
-                (people.filter(function(people){(person.height)}) > 69)
-                for (height in person.height) {
-                    person.height =+ heightSearchResults
-                }
-                return heightSearchResults
-            };
-            seatchByTrait();
-        };
-        if (searchTraitOptions === "weight") {
-            let weightSearchOption = parseInt(promptFor("How much do you think this person weighs? "))
-
-            if (weightSearchOption < 170) {
-                (people.filter(function(people){(person.weight)}) < 170)
-                for (weight in person.weight) {
-                    person.weight =+ weightSearchResults
-                }
-                return weightSearchResults
-            };
-            if (weightSearchOption > 169) {
-                (people.filter(function(people){(person.weight)}) > 169)
-                for (weight in person.weight) {
-                    person.weight =+ weightSearchResults
-                }
-                return heightSearchResults
-            };
-            searchByTrait();
-        };
-        if (searchTraitOptions === "eyecolor") {
-            let eyeColorSearchOption = promptFor("What color eyes does this person have?", chars);
-            
-            if (eyeColorSearchOption === "black") {
-                (people.filter(function(people){(person.eyeColor)}) === "black")
-                for ("black" in person.eyeColor) {
-                    person.eyeColor =+ eyeColorSearchResults
-                }
-                return eyeColorSearchResults
-            };
-            if (eyeColorSearchOption === "brown") {
-                (people.filter(function(people){(person.eyeColor)}) === "brown")
-                for ("brown" in person.eyeColor) {
-                    person.eyeColor =+ eyeColorSearchResults
-                }
-                return eyeColorSearchResults
-            };
-            if (eyeColorSearchOption === "hazel") {
-                (people.filter(function(people){(person.eyeColor)}) === "hazel")
-                for ("hazel" in person.eyeColor) {
-                    person.eyeColor =+ eyeColorSearchResults
-                }
-                return eyeColorSearchResults
-            };
-            if (eyeColorSearchOption === "blue") {
-                (people.filter(function(people){(person.eyeColor)}) === "blue")
-                for ("blue" in person.eyeColor) {
-                    person.eyeColor =+ eyeColorSearchResults
-                }
-                return eyeColorSearchResults
-            };
-            if (eyeColorSearchOption === "green") {
-                (people.filter(function(people){(person.eyeColor)}) === "green")
-                for ("green" in person.eyeColor) {
-                    person.eyeColor =+ eyeColorSearchResults
-                }
-                return eyeColorSearchResults
-            };
-            searchByTrait();
-        };
-        if (searchTraitOptions === "occupation") {
-            let occupationSearchOption = promptFor("What job does this person have?", chars);
-            
-            if (occupationSearchOption === "programmer") {
-                (people.filter(function(people){(person.occupation)}) === "programmer")
-                for ("programmer" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "assistant") {
-                (people.filter(function(people){(person.occupation)}) === "assistant")
-                for ("assistant" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "landscaper") {
-                (people.filter(function(people){(person.occupation)}) === "landscaper")
-                for ("landscaper" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "nurse") {
-                (people.filter(function(people){(person.occupation)}) === "nurse")
-                for ("nurse" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "student") {
-                (people.filter(function(people){(person.occupation)}) === "student")
-                for ("student" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "architect") {
-                (people.filter(function(people){(person.occupation)}) === "architect")
-                for ("architect" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "doctor") {
-                (people.filter(function(people){(person.occupation)}) === "doctor")
-                for ("doctor" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            if (occupationSearchOption === "politician") {
-                (people.filter(function(people){(person.occupation)}) === "politician")
-                for ("politician" in person.occupation) {
-                    person.occupation =+ occupationSearchResults
-                }
-                return occupationSearchResults
-            };
-            searchByTrait();
-
-    // Listed are all of the traits that someone could search by if they do not know the persons name.
-    let foundPersonByTrait = {
-        
-    }
-        
-    return displayPeople(foundPersonByTrait);
-}};
+    if (matchingArray.length > 0) {
+        let secondarySearch = searchByTrait(matchingArray)
+    };
+    if (secondarySearch.length > 0) {
+        let tertiarySearch = searchByTrait(secondarySearch)
+    };
+    if (tertiarySearch.length > 0) {
+        let quarternarySearch = searchByTrait(tertiarySearch)
+    };
+    if (quarternarySearch.length > 0) {
+        let quinarySearch = searchByTrait(quarternarySearch)
+    };
+};
 
 /**
  * This function will be useful for STRINGIFYING a collection of person-objects
@@ -415,16 +272,15 @@ function findPersonFamily(person, people) {
 // Find Descendants
 
 //function findPersonDescendants(person, people) {
-//    let descendants = `${person.firstName} ${person.lastName} has no descendants`
-  //  
-   // people.filter((el) => {
-    //    for (let person of person.parents) {
-      //      if (el.includes(parent) && el !== person) {
-        //        return true;
-          //  }
-       // }
-   // });
+//    let descendants = `${person.firstName} ${person.lastName} has no descendants`  
+//    people.filter((el) => {
+  //      for (let person of person.parents) {
+    //      if (el.includes(parent) && el !== person) {
+      //      return true;
+//      }
+  //   }
+    //});
    // if (descendants.length > 0) { }
-//    return descendants
+   // return descendants
 
 //} return displayPeople(descendants)
