@@ -132,16 +132,7 @@ function searchByTrait(people) {
     displayPeople(matchingArray);
 
     if (matchingArray.length > 0) {
-        let secondarySearch = searchByTrait(matchingArray)
-    };
-    if (secondarySearch.length > 0) {
-        let tertiarySearch = searchByTrait(secondarySearch)
-    };
-    if (tertiarySearch.length > 0) {
-        let quarternarySearch = searchByTrait(tertiarySearch)
-    };
-    if (quarternarySearch.length > 0) {
-        let quinarySearch = searchByTrait(quarternarySearch)
+        let refinedSearch = searchByTrait(matchingArray)
     };
 };
 
@@ -271,16 +262,17 @@ function findPersonFamily(person, people) {
 
 // Find Descendants
 
-//function findPersonDescendants(person, people) {
-//    let descendants = `${person.firstName} ${person.lastName} has no descendants`  
-//    people.filter((el) => {
-  //      for (let person of person.parents) {
-    //      if (el.includes(parent) && el !== person) {
-      //      return true;
-//      }
-  //   }
-    //});
-   // if (descendants.length > 0) { }
-   // return descendants
+function findPersonDescendants(people) {
+    let descendants = people.filter(function(person) {
+        for (let person of person.parents) {
+          if (person.includes(parents) && person.parents.id.includes(parents)) {
+            return true;
+      }
+     }
+    });
+    if (descendants.length === 0) {
+        alert("This person has no descendants :(")
+    }
+    return descendants
 
-//} return displayPeople(descendants)
+} return displayPeople(descendants)
