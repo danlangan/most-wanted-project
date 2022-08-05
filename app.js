@@ -121,10 +121,11 @@ function searchByTrait(people) {
         `Select and type each trait(s) that you would you like to seach for:\n\n
         'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation\n'
         `)
+        let genderSearchResults = [];
 
         if (searchTraitOptions === "gender") {
             let genderSearchOption = promptFor("Would you like to search for males for females?")
-            let genderSearchResults = []
+            
             if (genderSearchOption === "female") {
                 (people.filter(function(people){(person.gender)}) === "female")
                 for ("female" in person.gender) {
@@ -140,6 +141,8 @@ function searchByTrait(people) {
                 return genderSearchResults
             };
         };
+        if (searchTraitOptions === "height") {
+            let heightSearchOption = promptFor("How tall (in inches) do you think the person that you are looking for is? ")
 
         switch (searchTraitOptions) {
             case "gender":
