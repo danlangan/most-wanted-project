@@ -269,10 +269,12 @@ function findPersonDescendants(people) {
             return true;
       }
      }
+     return descendants
     });
+    
     if (descendants.length === 0) {
         alert("This person has no descendants :(")
     }
-    return descendants
-
-} return displayPeople(descendants)
+    
+    displayPeople(descendants);
+};
