@@ -31,7 +31,7 @@ function app(people) {
         case "no":
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
-            searchResults = searchByTraits(people);
+            searchResults = searchByTrait(people);
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -115,28 +115,51 @@ function searchByName(people) {
 }
 // End of searchByName()
 
-function searchByTraits(people) {
-    let gender = promptFor("What's this persons gender? Enter n/a if you are not sure.", chars);
-    let dob = promptFor("Whats this person's birthday? Enter n/a if you are not sure.", chars);
-    let height = promptFor("How tall is this person? Enter n/a if you are not sure.", chars);
-    let weight = promptFor("How much does this person weigh? Enter n/a if you are not sure.", chars);
-    let eyeColor = promptFor("What is this person's eye color? Enter n/a if you are not sure.", chars);
-    let occupation = promptFor("What job does this person have? Enter n/a if you are not sure.", chars);
+function searchByTrait(people) {
 
+    let searchTraitOptions = promptFor(
+        `Select and type each trait(s) that you would you like to seach for:\n\n
+        'gender'\n'height'\n'weight'\n'eyeColor'\n'occupation\n'
+        `)
+
+        switch (searchTraitOptions) {
+            case "gender":
+                let genderSearchResults = promptFor("What's this persons gender? Enter n/a if you are not sure.", chars)
+                switch (genderSearchResults) {
+                    case "male":
+                        array.forEach(element => {
+                            (people.filter(function(people){(people.gender)}) === "male")
+                        }); 
+                        genderSearchResults += foundPeopleByTrait;
+                        searchByTrait();
+                    case "female":
+                        array.forEach(element => {
+                            (people.filter(function(people){(person.gender)}) === "femaile")
+                        });
+                        genderSearchResults += foundPeopleByTrait;
+                        searchByTrait();
+                    }
+                return genderSearchResults;
+            case "height":
+                promptFor("How tall is this person? Enter n/a if you are not sure.", chars);
+                return height;
+            case "weight":
+                promptFor("How much does this person weigh? Enter n/a if you are not sure.", chars);
+                return weight;
+            case "eyeColor":
+                promptFor("What is this person's eye color? Enter n/a if you are not sure.", chars);
+                return eyeColor;
+            case "occupation":
+                promptFor("What job does this person have? Enter n/a if you are not sure.", chars);
+                return occupation;
+        
+        };
     // Listed are all of the traits that someone could search by if they do not know the persons name.
-    let foundPersonsByTrait = 
-        people.filter(function(person){
-        if (person.gender === gender || 
-            person.dob === dob || 
-            person.height === parseInt(height) ||
-            person.weight === parseInt(weight) ||
-            person.eyeColor === eyeColor || 
-            person.occupation === occupation)
-            {
-            return true;
-        }
-    });
-    return displayPeople(foundPersonsByTrait);
+    let foundPeopleByTrait = `
+        
+    `
+        
+    return displayPeople(foundPeopleByTrait);
 }
 
 /**
@@ -168,6 +191,7 @@ function displayFamily(family) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `I.D.: ${person.id}\n`;
     personInfo += `Gender: ${person.gender}\n`;
     personInfo += `D.O.B.: ${person.dob}\n`;
     personInfo += `Height: ${person.height}\n`;
@@ -264,14 +288,17 @@ function findPersonFamily(person, people) {
 
 // Find Descendants
 
-function findPersonDescendants(people) {
-    let descendants = people.filter((el) => {
+function findPersonDescendants(person, people) {
+    let descendants = `${person.firstName} ${person.lastName} has no descendants`
+    
+    people.filter((el) => {
         for (let person of person.parents) {
             if (el.includes(parent) && el !== person) {
                 return true;
             }
         }
     });
+    if (descendants.length > 0) { }
     return descendants
 
 } return displayPeople(descendants)
