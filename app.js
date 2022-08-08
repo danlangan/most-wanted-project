@@ -263,19 +263,18 @@ function findPersonFamily(person, people) {
 // Find Descendants
 
 function findPersonDescendants(person, people) {
-    let descendants = people.filter(
+    let personDescendants = people.filter(
         function(person) {
         for (let p of people) {
           if (person.parents.id >= 0 && person.parents.id.includes(person.id) && person.lastName === person.parents.lastName) {
             return true;
-      }
+        };
+        return personDescendants;
     }
-     return descendants
+    if (personDescendants.length < 0) {
+        alert("This person has no descendants :(") 
+    };
     });
-    
-    if (descendants.length < 0) {
-        alert("This person has no descendants :(")
-    }
-    
-    displayPeople(descendants);
+    displayPeople(personDescendants);
 };
+
