@@ -79,7 +79,7 @@ function mainMenu(person, people) {
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
+            displayPeople(personDescendants);
             break;
         case "restart":
             // Restart app() from the very beginning
@@ -263,18 +263,14 @@ function findPersonFamily(person, people) {
 // Find Descendants
 
 function findPersonDescendants(person, people) {
-    let personDescendants = people.filter(
-        function(person) {
-        for (let p of people) {
-          if (person.parents.id >= 0 && person.parents.id.includes(person.id) && person.lastName === person.parents.lastName) {
-            return true;
-        };
-        return personDescendants;
-    }
-    if (personDescendants.length < 0) {
-        alert("This person has no descendants :(") 
-    };
+    let descedantArray = people.filter(function(soloPerson){
+        return soloPerson.parents.includes(person.id);
     });
-    displayPeople(personDescendants);
+    if (descedantArray.length < 0) return[person];
+    let descendants = [person];
+    descedantArray.forEach((soloPerson) => {
+        descendants = [...descendants, ...findPersonDescendants(soloPerson, people)]
+    });
+    return descendants;
 };
 
