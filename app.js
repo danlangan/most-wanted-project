@@ -265,14 +265,14 @@ function findPersonFamily(person, people) {
 function findPersonDescendants(people) {
     let descendants = people.reduce((el) => {
         for (let person of person.parents) {
-          if (person.parents.id > 0 && person.parents.id.includes(person.id)) {
+          if (person.parents.id >= 0 && person.parents.id.includes(person.id)) {
             return true;
       }
     }
      return descendants
     });
     
-    if (descendants.length === 0) {
+    if (descendants.length < 0) {
         alert("This person has no descendants :(")
     }
     
