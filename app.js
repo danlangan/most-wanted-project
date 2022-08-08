@@ -263,9 +263,10 @@ function findPersonFamily(person, people) {
 // Find Descendants
 
 function findPersonDescendants(people) {
-    let descendants = people.reduce(function(person)){
+    let descendants = people.reduce((el) => {
         for (let person of person.parents) {
-          if (person.includes(parents) && person.parents != person.id) {
+          if (person.includes(parents) && person.parents.includes(id)) {
+            person.parents.id === person.id
             return true;
       }
     }
